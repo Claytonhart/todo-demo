@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import App from './App';
@@ -14,8 +15,10 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <App />
-        <GlobalStyles />
+        <Router>
+          <App />
+          <GlobalStyles />
+        </Router>
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>
