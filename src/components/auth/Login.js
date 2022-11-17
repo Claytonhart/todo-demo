@@ -37,8 +37,9 @@ const Login = () => {
     if (res?.user_token) {
       localStorage.setItem('user_token', res?.user_token);
       navigate('./');
+    } else {
+      console.log('error', res?.message);
     }
-    console.log('error', res?.message);
   };
 
   return (
