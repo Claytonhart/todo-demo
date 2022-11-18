@@ -1,9 +1,9 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-const TodoItems = ({ todos, updateTodo, deleteTodo }) => {
+const TodoItems = ({ todos, updateTodo, deleteTodo, searchValue }) => {
   return todos.map((todo, i) => {
-    return (
+    return todo.toLowerCase().includes(searchValue.toLowerCase()) ? (
       <TodoItem
         key={i}
         index={i}
@@ -11,7 +11,7 @@ const TodoItems = ({ todos, updateTodo, deleteTodo }) => {
         updateTodo={updateTodo}
         deleteTodo={deleteTodo}
       />
-    );
+    ) : null;
   });
 };
 

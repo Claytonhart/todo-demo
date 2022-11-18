@@ -7,6 +7,7 @@ const TodoContainer = () => {
   const localTodos = JSON.parse(localStorage.getItem('todos'));
 
   const [todos, setTodos] = useState(localTodos || []);
+  const [searchValue, setSearchValue] = useState('');
 
   const createTodo = () => {
     const newTodos = ['A new thing todo', ...todos];
@@ -31,7 +32,12 @@ const TodoContainer = () => {
   return (
     <Container>
       <SearchContainer>
-        <SearchInput type='text' placeholder='search'></SearchInput>
+        <SearchInput
+          type='text'
+          placeholder='search'
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
         <SearchIcon />
         <CreateTodoButton onClick={createTodo}>New</CreateTodoButton>
       </SearchContainer>
@@ -39,6 +45,7 @@ const TodoContainer = () => {
         todos={todos}
         updateTodo={updateTodo}
         deleteTodo={deleteTodo}
+        searchValue={searchValue}
       />
     </Container>
   );
