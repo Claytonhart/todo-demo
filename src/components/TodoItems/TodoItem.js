@@ -3,7 +3,7 @@ import { Edit2, Trash2 } from 'react-feather';
 import styled from 'styled-components/macro';
 import CreateTodo from './CreateTodo';
 
-const TodoItem = ({ index, todoText, updateTodo, editing }) => {
+const TodoItem = ({ index, todoText, updateTodo, deleteTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   if (isEditing)
@@ -21,7 +21,7 @@ const TodoItem = ({ index, todoText, updateTodo, editing }) => {
       <Text>{todoText}</Text>
       <IconContainer>
         <Edit2 onClick={() => setIsEditing(true)} />
-        <Trash2 />
+        <Trash2 onClick={() => deleteTodo(index)} />
       </IconContainer>
     </Container>
   );

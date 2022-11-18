@@ -14,7 +14,14 @@ const TodoContainer = () => {
     setTodos(newTodos);
   };
 
-  const handleUpdateTodo = (text, index) => {
+  const deleteTodo = (index) => {
+    let newTodos = [...todos];
+    newTodos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
+
+  const updateTodo = (text, index) => {
     let todosCopy = [...todos];
     todosCopy[index] = text;
     localStorage.setItem('todos', JSON.stringify(todosCopy));
@@ -28,7 +35,11 @@ const TodoContainer = () => {
         <SearchIcon />
         <CreateTodoButton onClick={createTodo}>New</CreateTodoButton>
       </SearchContainer>
-      <TodoItems todos={todos} updateTodo={handleUpdateTodo} />
+      <TodoItems
+        todos={todos}
+        updateTodo={updateTodo}
+        deleteTodo={deleteTodo}
+      />
     </Container>
   );
 };
