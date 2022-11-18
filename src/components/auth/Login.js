@@ -13,6 +13,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const [submitError, setSubmitError] = useState('');
 
   const isAuthenticated = localStorage.getItem('user_token');
 
@@ -67,8 +68,6 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (formErrors.email || formErrors.password) return;
-    // let error = validateForm();
-    // if (error) return;
     const data = new FormData();
     data.append('email', email);
     data.append('password', password);
@@ -84,7 +83,7 @@ const Login = () => {
       localStorage.setItem('user_token', res?.user_token);
       navigate('./');
     } else {
-      console.log('error', res?.message);
+      setSubmitError(res?.message);
     }
   };
 
@@ -105,6 +104,7 @@ const Login = () => {
             required
             noValidate
             id='email'
+            formError={formErrors.email}
           />
           <UserIcon />
         </LoginInputContainer>
@@ -119,12 +119,14 @@ const Login = () => {
             onChange={(e) => onChange(e)}
             onBlur={(e) => validatePassword(e.target.value)}
             id='password'
+            formError={formErrors.password}
           />
           <LockIcon />
         </LoginInputContainer>
         {formErrors.password && <FormError>{formErrors.password}</FormError>}
         <LoginButton type='submit' value='Login' />
       </LoginForm>
+      <SubmitErrorMessage>{submitError}</SubmitErrorMessage>
     </Container>
   );
 };
@@ -157,7 +159,11 @@ const LoginInput = styled.input`
   margin-bottom: 12px;
   border: 1px solid gainsboro;
   border-radius: 5px;
+  outline: none;
   width: 100%;
+
+  border-color: ${(props) =>
+    !!props.formError ? props.theme.primary.red : 'gainsboro'};
 `;
 
 const LoginInputContainer = styled.div`
@@ -192,6 +198,11 @@ const LoginButton = styled.input`
 
 const FormError = styled.div`
   color: ${(props) => props.theme.primary.red};
+`;
+
+const SubmitErrorMessage = styled.div`
+  color: ${(props) => props.theme.primary.red};
+  margin-top: 16px;
 `;
 
 export default Login;
