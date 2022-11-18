@@ -77,7 +77,7 @@ const Login = () => {
     data.append('email', email);
     data.append('password', password);
     const res = await fetch(
-      'http://dev.rapptrlabs.com/Tests/scripts/user-login.php',
+      'https://dev.rapptrlabs.com/Tests/scripts/user-login.php',
       {
         method: 'POST',
         body: data,

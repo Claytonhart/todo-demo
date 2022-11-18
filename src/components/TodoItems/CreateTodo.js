@@ -6,7 +6,6 @@ const CreateTodo = ({ index, todoText, setIsEditing, updateTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('update new text, ', todo);
     setIsEditing(false);
     updateTodo(todo, index);
   };
