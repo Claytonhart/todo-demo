@@ -37,6 +37,7 @@ const Container = styled.div`
 const IconContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 56px;
 `;
 
