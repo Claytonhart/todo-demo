@@ -35,6 +35,10 @@ const TodoLogo = styled.h3`
   font-size: 64px;
   text-decoration: underline;
   text-decoration-color: ${(props) => props.theme.primary.red};
+
+  @media (max-width: 600px) {
+    font-size: 48px;
+  }
 `;
 
 export default Main;

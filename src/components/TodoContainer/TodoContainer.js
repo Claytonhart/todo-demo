@@ -62,8 +62,7 @@ const SearchContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: 24px 16px;
 `;
 
 const SearchInput = styled.input`
