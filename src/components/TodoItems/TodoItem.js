@@ -20,8 +20,8 @@ const TodoItem = ({ index, todoText, updateTodo, deleteTodo }) => {
     <Container>
       <Text>{todoText}</Text>
       <IconContainer>
-        <Edit2 onClick={() => setIsEditing(true)} />
-        <Trash2 onClick={() => deleteTodo(index)} />
+        <EditButton onClick={() => setIsEditing(true)} />
+        <DeleteButton onClick={() => deleteTodo(index)} />
       </IconContainer>
     </Container>
   );
@@ -43,6 +43,14 @@ const IconContainer = styled.div`
 const Text = styled.div`
   padding: 6px;
   border: 1px solid transparent;
+`;
+
+const EditButton = styled(Edit2)`
+  cursor: pointer;
+`;
+
+const DeleteButton = styled(Trash2)`
+  cursor: pointer;
 `;
 
 export default TodoItem;
