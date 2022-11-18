@@ -15,6 +15,11 @@ const Login = () => {
   });
   const [submitError, setSubmitError] = useState('');
 
+  const disableForm =
+    !formData.email ||
+    !formData.password ||
+    !!formErrors.email ||
+    !!formErrors.password;
   const isAuthenticated = localStorage.getItem('user_token');
 
   if (isAuthenticated) {
@@ -124,7 +129,7 @@ const Login = () => {
           <LockIcon />
         </LoginInputContainer>
         {formErrors.password && <FormError>{formErrors.password}</FormError>}
-        <LoginButton type='submit' value='Login' />
+        <LoginButton type='submit' value='Login' disabled={disableForm} />
       </LoginForm>
       <SubmitErrorMessage>{submitError}</SubmitErrorMessage>
     </Container>
@@ -194,6 +199,11 @@ const LoginButton = styled.input`
   margin-top: 8px;
   cursor: pointer;
   border: none;
+
+  :disabled {
+    background-color: ${(props) => props.theme.primary.lightblue};
+    cursor: not-allowed;
+  }
 `;
 
 const FormError = styled.div`
