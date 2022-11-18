@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import LogoutButton from '../auth/LogoutButton';
 import TodoContainer from '../TodoContainer/TodoContainer';
 
 const Main = () => {
@@ -11,10 +12,13 @@ const Main = () => {
   }
 
   return (
-    <Container>
-      <TodoLogo>My To-Do List</TodoLogo>
-      <TodoContainer />
-    </Container>
+    <>
+      <Container>
+        <TodoLogo>My To-Do List</TodoLogo>
+        <TodoContainer />
+      </Container>
+      <LogoutButton />
+    </>
   );
 };
 
